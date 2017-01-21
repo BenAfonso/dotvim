@@ -13,77 +13,15 @@
 set nocompatible
 filetype off
 
-" Vundle settings
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call pathogen#infect()
+call pathogen#helptags()
 
-Plugin 'VundleVim/Vundle.vim'
-" Brief help
-" :PluginList	- lists configured plugins
-" :PluginInstall	-install plugins; '!' to update or :PluginUpdate
-" :PluginSearch xxx
-" :PluginClean
-" For help :h vundle
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Files Tree
-Plugin 'scrooloose/nerdtree'
-" Futuristic git integration
-Plugin 'tpope/vim-fugitive'
-" Syntax checker
-Plugin 'scrooloose/syntastic'
-" Great status line
-Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
-" Js language integration
-"Plugin 'pangloss/vim-javascript'
-" Autocompletion !
-" Plugin 'valloric/youcompleteme'
-
-" Solarized color themes
-" Plugin 'altercation/vim-colors-solarized'
-
-" Commenting plugin
-Plugin 'scrooloose/nerdcommenter'
-" Plugin 'raimondi/delimitmate'
-
-" Plugin 'nathanaelkane/vim-indent-guides'
-
-" Molokai Theme
-" Plugin 'tomasr/molokai'
-
-"Plugin 'flazz/vim-colorschemes'
-
-
-" Git NERDTree plugin
-Plugin 'xuyuanp/nerdtree-git-plugin'
-
-
-" Plugin 'leafgarland/typescript-vim'
-" Plugin 'magarcia/vim-angular2-snippets'
-Plugin 'majutsushi/tagbar'
-
-" Plugin 'MarcWeber/vim-addon-mw-utils'
-" Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-" All the plugins must be added before this line
-call vundle#end()		"required
-filetype plugin indent on	"required
-
-
-"syntax enable
-"set background=dark
-"let g:solarized_termcolors=256
-"colorscheme solarized
-colorscheme molokai
+syntax on
+color monokai
 
 let mapleader = ","
 
-command EditConf edit ~/.vimrc
+command EditConf edit ~/.vim/vimrc
 :map <silent> <C-n> :NERDTreeToggle<CR>		" Ctrl-n to Toggle the Tree View
 
 
@@ -99,10 +37,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
-" Molokay Theme
-"let g:molokai_original = 1
-"let g:rehash256 = 1
 
 " IdentGuides settings
 set ts=4 sw=4 et
