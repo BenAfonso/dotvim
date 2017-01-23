@@ -8,6 +8,7 @@
 
 
 
+
 " Global configs {{{
 set nocompatible
 filetype off
@@ -42,9 +43,32 @@ set foldnestmax=10
 nnoremap <space> za
 " }}}
 
-" Pathogen {{{
-call pathogen#infect()
-call pathogen#helptags()
+" Plug {{{
+
+" Load vim-plug if not exists
+if empty(glob("./autoload/plug.vim"))
+    execute '!curl -fLo ./autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
+call plug#begin('./plug')
+
+
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'altercation/vim-colors-solarized'
+Plug 'dracula/vim'
+Plug 'sickill/vim-monokai'
+Plug 'vim-syntastic/syntastic'
+Plug 'vim-airline/vim-airline'
+Plug 'scrooloose/nerdcommenter'
+Plug 'majutsushi/tagbar'
+Plug 'leafgarland/typescript-vim'
+Plug 'tpope/vim-fugitive'
+
+" Initialize plugin system
+call plug#end()
+
+
 " }}}
 
 " Syntax {{{
