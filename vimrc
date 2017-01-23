@@ -25,7 +25,7 @@ vmap <C-x> x
 imap <C-v> <esc>P
 
 " Shortcut for editing config
-command EditConf edit ~/.vim/vimrc
+command EditConf edit ~/dotvim/vimrc
  " }}}
 
 " Snippets {{{
@@ -139,14 +139,11 @@ if has("autocmd")
                     \ if line("'\"") >= 1 && line("'\"") <= line("$") |
                     \   exe "normal! g`\"" |
                     \ endif
-
     augroup END
-
 else
-
     set autoindent		" always set autoindenting on
+-endif " has("autocmd")
 
-endif " has("autocmd")
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.

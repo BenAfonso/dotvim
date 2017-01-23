@@ -25,6 +25,9 @@
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = https://github.com/majutsushi/tagbar
-[submodule "/Users/benjaminafonso/.vim/bundle/typescript-vim"]
-	path = /Users/benjaminafonso/.vim/bundle/typescript-vim
+[submodule "bundle/typescript-vim"]
+	path = bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
