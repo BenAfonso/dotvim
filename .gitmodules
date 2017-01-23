@@ -28,3 +28,6 @@
 [submodule "/Users/benjaminafonso/.vim/bundle/typescript-vim"]
 	path = /Users/benjaminafonso/.vim/bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
