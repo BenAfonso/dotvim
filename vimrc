@@ -46,11 +46,11 @@ nnoremap <space> za
 " Plug {{{
 
 " Load vim-plug if not exists
-if empty(glob("./autoload/plug.vim"))
-    execute '!curl -fLo ./autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-endif
+"if empty(glob("~/dotvim/autoload/plug.vim"))
+    "execute '!curl -fLo ./autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+""endif
 
-call plug#begin('./plug')
+call plug#begin('~/dotvim/plug')
 
 
 Plug 'scrooloose/nerdtree'
