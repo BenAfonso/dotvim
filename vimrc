@@ -9,6 +9,7 @@
 
 
 
+
 " Global configs {{{
 set nocompatible
 filetype off
@@ -43,12 +44,12 @@ set foldnestmax=10
 nnoremap <space> za
 " }}}
 
-" Plug {{{
+ " Plug {{{
 
 " Load vim-plug if not exists
-"if empty(glob("~/dotvim/autoload/plug.vim"))
-    "execute '!curl -fLo ./autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-""endif
+if empty(glob("~/dotvim/autoload/plug.vim"))
+    execute '!curl -fLo ~/dotvim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
 
 call plug#begin('~/dotvim/plug')
 
@@ -64,7 +65,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-fugitive'
-
 " Initialize plugin system
 call plug#end()
 
