@@ -6,14 +6,10 @@
 "     for Unix and OS/2:  ~/.vimrc
 "  for MS-DOS and Win32:  $VIM\_vimrc
 
-
-
-
-
 " Global configs {{{
 set nocompatible
 filetype off
-
+set autoread
 let mapleader = ","
 set relativenumber
 " }}}
@@ -25,12 +21,20 @@ vmap <C-c> y
 vmap <C-x> x
 " " CTRL-V to paste (insert mode)
 imap <C-v> <esc>P
-
+imap jk <esc>
+"Switching buffer
+map <leader>n :bn<cr>
+map <leader>p :bp<cr>
+map <leader>d :bdelete<cr>
 " Shortcut for editing config
 command EditConf edit ~/dotvim/vimrc
- " }}}
+
+nmap ; .
+
+" }}}
 
 " Snippets {{{
+
 
 " }}}
 
@@ -65,15 +69,64 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-fugitive'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'groenewege/vim-less'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+"Plug 'Valloric/YouCompleteMe'
+Plug 'Shougo/neocomplete.vim'
 " Initialize plugin system
 call plug#end()
 
 
 " }}}
 
+" Airline {{{
+let g:airline_theme='badwolf'
+" }}}
+
+" Multicursor {{{
+let g:multi_cursor_next_key='<C-m>'
+" }}}
+
+" VimIcons {{{
+let g:airline_powerline_fonts = 1
+
+"}}}
+
+" NerdTREE {{{
+" let g:nerdtree_tabs_open_on_console_startup=1
+" }}}
+
+" NerdTREE Highlighting {{{
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+
+let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
+"}}}
+
 " Syntax {{{
 syntax on
 color monokai
+" }}}
+
+" Snippets {{{
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:UltiSnipsEditSplit="vertical"
+
 " }}}
 
 " NERDTree {{{
@@ -94,6 +147,11 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes':   [],'passive_filetypes': [] }
+noremap <C-w>e :SyntasticCheck<CR>
+noremap <C-w>f :SyntasticToggleMode<CR>
+
 " }}}
 
 " IdentGuides setting {{{s
