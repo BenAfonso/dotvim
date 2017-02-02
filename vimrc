@@ -6,6 +6,7 @@
 "     for Unix and OS/2:  ~/.vimrc
 "  for MS-DOS and Win32:  $VIM\_vimrc
 
+
 " Global configs {{{
 set nocompatible
 filetype off
@@ -14,6 +15,9 @@ let mapleader = ","
 set relativenumber
 set guioptions-=L
 set hidden
+
+highlight ColorColumn ctermbg=gray
+set colorcolumn=80
 " }}}
 
 " Key Bindings {{{
@@ -72,7 +76,7 @@ set foldnestmax=10
 nnoremap <space> za
 " }}}
 
- " Plug {{{
+" {{{ Vim Plug
 
 " Load vim-plug if not exists
 if empty(glob("~/dotvim/autoload/plug.vim"))

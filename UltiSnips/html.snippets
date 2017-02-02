@@ -1,3 +1,26 @@
 snippet t 
 <${1:div}></${1/(\w+).*/$1/}>
 endsnippet
+
+snippet polymerElement "Polymer Component" b
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="$1">
+  <template>
+    <style>
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+	<!-- HTML -->
+  </template>
+
+  <script>
+    Polymer({
+      is: '$1',
+    });
+  </script>
+</dom-module>
+endsnippet
