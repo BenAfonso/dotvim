@@ -12,6 +12,8 @@ filetype off
 set autoread
 let mapleader = ","
 set relativenumber
+set guioptions-=L
+set hidden
 " }}}
 
 " Key Bindings {{{
@@ -22,20 +24,42 @@ vmap <C-x> x
 " " CTRL-V to paste (insert mode)
 imap <C-v> <esc>P
 imap jk <esc>
-"Switching buffer
-map <leader>n :bn<cr>
-map <leader>p :bp<cr>
-map <leader>d :bdelete<cr>
 " Shortcut for editing config
 command EditConf edit ~/dotvim/vimrc
 
+map <leader>t :CtrlP<CR>
+" nmap <Alt-j> <C-W>j
+nnoremap Ì <C-W>h
+nnoremap Ï <C-W>j
+nnoremap È <C-W>k
+nnoremap ¬ <C-W>l
+" nmap <leader>k <C-W>k
+" nmap <A-l> <C-W>l
+
+"nmap <silent> <A-Up> :wincmd k<CR>
+"nmap <silent> <A-Down> :wincmd j<CR>
+"nmap <silent> <A-Left> :wincmd h<CR>
+"nmap <silent> <A-Right> :wincmd l<CR>
 nmap ; .
+
+" {{{ Buffers
+" Removes buffer and switch to the previous one
+nmap <leader>bq :bp <BAR> bd #<CR>
+" Create a new empty buffer
+nmap <leader>T :enew<cr>
+
+"Switching buffer
+map <leader>n :bn<cr>
+map <leader>p :bp<cr>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
+" }}}
+
 
 " }}}
 
 " Snippets {{{
-
-
 " }}}
 
 " Folds {{{
@@ -80,12 +104,36 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'groenewege/vim-less'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-"Plug 'Valloric/YouCompleteMe'
 Plug 'Shougo/neocomplete.vim'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-tbone'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-runner'
+Plug '907th/vim-auto-save'
+Plug 'jaxbot/browserlink.vim'
+Plug 'KabbAmine/vCoolor.vim'
+Plug 'ap/vim-css-color'
+Plug 'simeji/winresizer'
 " Initialize plugin system
 call plug#end()
 
+" }}}
 
+" AutoSave {{{
+
+set updatetime=1000
+let g:auto_save_events = ["InsertLeave", "TextChanged", "TextChangedI"]
+
+" }}}
+
+" Vim & Tmux {{{
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 " }}}
 
 " Airline {{{
@@ -105,6 +153,10 @@ let g:airline_powerline_fonts = 1
 " let g:nerdtree_tabs_open_on_console_startup=1
 " }}}
 
+" VimColors {{{
+map ® :VCoolor<CR>
+" }}}
+
 " NerdTREE Highlighting {{{
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
@@ -119,6 +171,15 @@ syntax on
 color monokai
 " }}}
 
+" Neocomplete {{{
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#min_keyword_length = 3
+" }}}
+
 " Snippets {{{
 
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -127,6 +188,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 let g:UltiSnipsEditSplit="vertical"
 
+"let g:auto_save_events = ["InsertLeave", "TextChanged"]
 " }}}
 
 " NERDTree {{{
