@@ -18,6 +18,10 @@ set hidden
 
 highlight ColorColumn ctermbg=gray
 set colorcolumn=80
+
+set tabstop=4
+set shiftwidth=4
+set expandtab
 " }}}
 
 " Key Bindings {{{
@@ -76,6 +80,16 @@ set foldnestmax=10
 nnoremap <space> za
 " }}}
 
+" Visual.vim {{{
+" Allow maccro repeating on a block
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
+endfunction
+" }}}
+
 " {{{ Vim Plug
 
 " Load vim-plug if not exists
@@ -112,6 +126,7 @@ Plug 'Shougo/neocomplete.vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-tbone'
+Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
 Plug '907th/vim-auto-save'
@@ -119,9 +134,18 @@ Plug 'jaxbot/browserlink.vim'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'ap/vim-css-color'
 Plug 'simeji/winresizer'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+Plug 'mileszs/ack.vim'
+Plug 'mattn/emmet-vim'
 " Initialize plugin system
 call plug#end()
 
+" }}}
+
+" Gist-vim {{{
+let g:gist_post_private = 1
+let g:gist_show_private = 1
 " }}}
 
 " AutoSave {{{
@@ -146,6 +170,21 @@ let g:airline_theme='badwolf'
 
 " Multicursor {{{
 let g:multi_cursor_next_key='<C-m>'
+
+" Called once right before you start selecting multiple cursors
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+
+" Called once only when the multiple selection is canceled (default <Esc>)
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction
+
 " }}}
 
 " VimIcons {{{
