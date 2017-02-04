@@ -95,8 +95,8 @@ endfunction
 " {{{ Vim Plug
 
 " Load vim-plug if not exists
-if empty(glob("~/dotvim/autoload/plug.vim"))
-    execute '!curl -fLo ~/dotvim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+if empty(glob("~/.vim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
 call plug#begin('~/.vim/plug')
