@@ -50,6 +50,8 @@ nnoremap ¬ <C-W>l
 "nmap <silent> <A-Right> :wincmd l<CR>
 nmap ; .
 
+nnoremap <Leader>w :w<CR>
+
 " {{{ Buffers
 " Removes buffer and switch to the previous one
 nmap <leader>bq :bp <BAR> bd #<CR>
@@ -97,7 +99,7 @@ if empty(glob("~/dotvim/autoload/plug.vim"))
     execute '!curl -fLo ~/dotvim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
-call plug#begin('~/dotvim/plug')
+call plug#begin('~/.vim/plug')
 
 
 Plug 'scrooloose/nerdtree'
