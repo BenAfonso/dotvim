@@ -70,6 +70,10 @@ nmap <leader>bl :ls<CR>
 " }}}
 
 " Snippets {{{
+" Set ultisnips triggers
+let g:UltiSnipsExpandTrigger="<tab>"                                            
+let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"   
 " }}}
 
 " Folds {{{
@@ -143,6 +147,10 @@ Plug 'mattn/emmet-vim'
 " Initialize plugin system
 call plug#end()
 
+" }}}
+
+" CtrlP {{{
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 " }}}
 
 " Gist-vim {{{
