@@ -1,0 +1,25 @@
+snippet pl "Padding left" b
+padding-left: $1;
+endsnippet
+
+snippet @keyframes "Keyframes" b
+@keyframes $1 {
+$2
+}
+@-webkit-keyframes $1 {
+$2
+}
+@-o-keyframes $1 {
+$2
+}
+@-moz-keyframes $1 {
+$2
+}
+endsnippet
+
+snippet anim "Animation" b
+-webkit-animation: $1 $2 $3 $4;
+-moz-animation: $1 $2 $3 $4;
+-o-animation: $1 $2 $3 $4;
+animation: ${1:all} ${2:1s} ${3:infinite} ${4:ease-in};
+endsnippet

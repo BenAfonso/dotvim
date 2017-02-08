@@ -24,6 +24,25 @@ set shiftwidth=4
 set expandtab
 " }}}
 
+
+au FocusGained,BufEnter * :silent! !
+
+" autocmd WinEnter <buffer> :view 
+" Fugitive {{{
+autocmd BufReadPost fugitive://* set bufhidden=delete
+autocmd User fugitive
+  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+  \   nnoremap <buffer> .. :edit %:h<CR> |
+  \ endif
+
+autocmd BufRead fugitive\:* xnoremap <buffer> dp :diffput<cr>|xnoremap <buffer> do :diffget<cr>
+nnoremap <expr> ar &diff ? '5do]c' : 'ar'
+nnoremap <expr> al &diff ? '2do]c' : 'al'
+" AcceptRight 5do]c
+" AcceptLeft 2do]c
+
+" }}}
+
 " Key Bindings {{{
 " CTRL-C to copy (visual mode)
 vmap <C-c> y
@@ -49,9 +68,16 @@ nnoremap ¬ <C-W>l
 "nmap <silent> <A-Left> :wincmd h<CR>
 "nmap <silent> <A-Right> :wincmd l<CR>
 nmap ; .
-
+nmap [ (
+nmap ] )
 nnoremap <Leader>w :w<CR>
 
+nnoremap Ï :m .+1<CR>==
+nnoremap È :m .-2<CR>==
+inoremap Ï <Esc>:m .+1<CR>==gi
+inoremap È <Esc>:m .-2<CR>==gi
+vnoremap Ï :m '>+1<CR>gv=gv
+vnoremap È :m '<-2<CR>gv=gv
 " {{{ Buffers
 " Removes buffer and switch to the previous one
 nmap <leader>bq :bp <BAR> bd #<CR>
@@ -84,6 +110,21 @@ set foldnestmax=10
 
 " space open/closes folds
 nnoremap <space> za
+" }}}
+
+" Split vertically {{{
+" always split windows vertically
+set splitright
+set diffopt+=vertical
+silent! set splitvertical
+if v:errmsg != ''
+  cabbrev split vert split
+  cabbrev hsplit split
+  noremap <C-w>] :vert botright wincmd ]<CR>
+  noremap <C-w><C-]> :vert botright wincmd ]<CR>
+else
+  cabbrev hsplit hor split
+endif
 " }}}
 
 " Visual.vim {{{
@@ -144,6 +185,13 @@ Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 Plug 'mileszs/ack.vim'
 Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-sleuth'
+Plug 'easymotion/vim-easymotion'
+Plug 'raimondi/delimitmate'
+Plug 'christoomey/vim-conflicted'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'BenAfonso/vim-gdiff-tool'
+
 " Initialize plugin system
 call plug#end()
 
@@ -283,7 +331,7 @@ set backspace=indent,eol,start
 set nobackup
 set nowritebackup
 set noundofile
-
+set noswapfile
 " }}}
 
 " History & Ruler {{{
